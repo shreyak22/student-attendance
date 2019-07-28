@@ -1,16 +1,20 @@
 package com.shreyauntwale.studentattendance.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
+
+
+@RestController
 public class HelloWorld {
 
-    @RequestMapping(value = "/home")
-    @ResponseBody
-    public static String index(){
-        return "Hello World";
-    }
+        @GetMapping("/api/hello")
+        public String hello() {
+            return "Hello, the time at the server is now " + new Date () + "\n";
+        }
+
+
 
 }
