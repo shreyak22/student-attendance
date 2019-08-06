@@ -3,7 +3,8 @@ My first lift-off project
 # Student Attendance System
 
 ## Overview
-Student Attendance System is a web application that allows users to easily record,
+A Spring Boot application to track attendance of every class being organized by non-profit organizations.
+This is a Student Attendance System that allows users to easily record,
  and track student attendance so teacher's have better data for each class.
 
 ## Features
