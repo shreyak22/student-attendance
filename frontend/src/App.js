@@ -4,6 +4,7 @@ import './App.css';
 import Example from './calendar';
 import ButtonAppBar from './MenuBar';
 import EnhancedTable from './StudentTable';
+import ContainedButtons from './button';
 
 
 
@@ -32,8 +33,10 @@ class App extends Component {
         <div>
             <ButtonAppBar />
             <div id="parentdiv">
+                    <ContainedButtons />
                     <Example />
                     <EnhancedTable rows={this.state.rows}/>
+
             </div>
 
 

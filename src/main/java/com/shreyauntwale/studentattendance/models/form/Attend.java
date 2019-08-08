@@ -2,12 +2,11 @@ package com.shreyauntwale.studentattendance.models.form;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
 import java.time.LocalDate;
+import java.util.List;
 
 
 /**
@@ -19,29 +18,13 @@ public class Attend {
     @GeneratedValue
     private int id;
 
-    @NotNull
-    @Size(min=3, max=15)
-    private String name;
-
-    @NotNull
-    @Size(min=3, max=15)
-    private String lastname;
+    @ManyToOne
+    private Student student;
 
     @NotNull
     private LocalDate date;
 
-
-
-
     private AttendType type;
-
-
-
-    public Attend(String name, String lastname) {
-        this();
-        this.name = name;
-        this.lastname = lastname;
-    }
 
     public Attend() {
 
@@ -59,21 +42,9 @@ public class Attend {
         return id;
     }
 
-    @JsonProperty("firstname")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    @JsonProperty("studentName")
+    public String getStudent() {
+        return this.student.getName () + " " + this.student.getLastname ();
     }
 
     @JsonProperty("present")

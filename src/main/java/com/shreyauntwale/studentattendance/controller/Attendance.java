@@ -23,11 +23,7 @@ public class Attendance {
     @GetMapping("/api/attend")
     public Iterable index() {
 
-
-
-
         Iterable<Attend> listofmaps = attendDao.findAll ();
-
 
         return listofmaps;
     }
@@ -37,11 +33,7 @@ public class Attendance {
     @RequestMapping(value="/api/fetch" , method=RequestMethod.GET)
     @ResponseBody
     public Iterable fetchResult(@RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate fromDate) {
-        ArrayList<Integer> nums = new ArrayList<> (  );
-        nums.add ( 0 );
-        nums.add ( 2 );
-        nums.add ( 3 );
-        nums.add ( 4 );
+
         Iterable<Attend> listofmaps = attendDao.findAll ();
         ArrayList<Attend> attends = new ArrayList<> (  );
         for (Attend map : listofmaps) {
