@@ -1,43 +1,42 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import Icon from '@material-ui/core/Icon';
+import DeleteIcon from '@material-ui/icons/Delete';
+import NavigationIcon from '@material-ui/icons/Navigation';
 
 const useStyles = makeStyles(theme => ({
-  button: {
-    margin: theme.spacing(2),
+  fab: {
+    margin: theme.spacing(1),
   },
-  input: {
-    display: 'none',
+  extendedIcon: {
+    marginRight: theme.spacing(1),
   },
 }));
 
-export default function ContainedButtons() {
+
+
+
+
+export default function FloatingActionButtons() {
   const classes = useStyles();
+
+
 
   return (
     <div>
-      <Button variant="contained" className={classes.button}>
-        Add Class
-      </Button>
-      <Button variant="contained" color="primary" className={classes.button}>
-        Add Students
-      </Button>
-      <Button variant="contained" color="secondary" className={classes.button}>
-        Create New
-      </Button>
+      <Fab color="primary" aria-label="add" className={classes.fab} >
+        <AddIcon />
+      </Fab>
 
-      <input
-        accept="image/*"
-        className={classes.input}
-        id="contained-button-file"
-        multiple
-        type="file"
-      />
-      <label htmlFor="contained-button-file">
-        <Button variant="contained" component="span" className={classes.button}>
-          Upload
-        </Button>
-      </label>
+      <Fab variant="extended" aria-label="search" className={classes.fab}>
+        <NavigationIcon className={classes.extendedIcon} />
+        Search
+      </Fab>
+      <Fab aria-label="delete" className={classes.fab}>
+        <DeleteIcon />
+      </Fab>
     </div>
   );
 }

@@ -33,9 +33,8 @@ class Example extends React.Component {
 
         <DatePicker
           className='my-react-datepicker'
-          locale='fr'
           value={this.state.datePickerDate}
-          onChange={(jsDate) => this.setState({ datePickerDate: jsDate })}
+          onChange={(jsDate) => this.props.action(jsDate)}
         />
         <p />
 

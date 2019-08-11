@@ -34,10 +34,12 @@ function stableSort(array, cmp) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
     const order = cmp(a[0], b[0]);
+    console.log(order);
     if (order !== 0) return order;
     return a[1] - b[1];
   });
-  return stabilizedThis.map(el => el[0]);
+//  return stabilizedThis.map(el => el[0]);
+return array;
 }
 
 function getSorting(order, orderBy) {
@@ -45,9 +47,11 @@ function getSorting(order, orderBy) {
 }
 
 const headRows = [
-  { id: 'firstname', numeric: false, disablePadding: true, label: 'First Name' },
-  { id: 'lastname', numeric: true, disablePadding: false, label: 'Last Name' },
+  { id: 'id', numeric: true, disablePadding: true, label: 'Id', hidden: true },
+  { id: 'studentId', numeric: false, disablePadding: true, label: 'Student Id' },
+  { id: 'studentName', numeric: true, disablePadding: false, label: 'Name' },
   { id: 'present', numeric: true, disablePadding: false, label: 'Present' },
+  { id: 'date', numeric: true, disablePadding: false, label: 'Date' },
 ];
 
 function EnhancedTableHead(props) {
@@ -67,7 +71,7 @@ function EnhancedTableHead(props) {
             inputProps={{ 'aria-label': 'select all desserts' }}
           />
         </TableCell>
-        {headRows.map(row => (
+        {headRows.filter(row => row.hidden !== true).map(row => (
           <TableCell
             key={row.id}
             align={row.numeric ? 'right' : 'left'}
@@ -206,7 +210,7 @@ const useStyles = makeStyles(theme => ({
 export default function EnhancedTable({rows}) {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('lastname');
+  const [orderBy, setOrderBy] = React.useState('studentName');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -287,17 +291,17 @@ export default function EnhancedTable({rows}) {
               {stableSort(rows, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.firstname);
+                  const isItemSelected = isSelected(row.id);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={event => handleClick(event, row.firstname)}
+                      onClick={event => handleClick(event, row.id)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.firstname}
+                      key={row.id}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -307,10 +311,11 @@ export default function EnhancedTable({rows}) {
                         />
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none" style={{ fontSize : 16 }}>
-                        {row.firstname}
+                        {row.studentId}
                       </TableCell>
-                      <TableCell align="right" style={{ fontSize : 16 }}>{row.lastname}</TableCell>
+                      <TableCell align="right" style={{ fontSize : 16 }}>{row.studentName}</TableCell>
                       <TableCell align="right" style={{ fontSize : 16 }}>{row.present}</TableCell>
+                      <TableCell align="right" style={{ fontSize : 16 }}>{row.date}</TableCell>
                     </TableRow>
                   );
                 })}

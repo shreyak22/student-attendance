@@ -27,6 +27,16 @@ public class Student {
     @OneToMany
     private List<Attend> attendanceDays = new ArrayList<> ();
 
+    public Student( String name, String lastname) {
+        this.name = name;
+        this.lastname = lastname;
+    }
+
+
+    public Student(){
+
+    }
+
     public int getId() {
         return id;
     }

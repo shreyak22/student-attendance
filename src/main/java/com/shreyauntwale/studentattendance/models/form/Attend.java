@@ -30,9 +30,6 @@ public class Attend {
 
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
 
     public void setDate(LocalDate date) {
         this.date = date;
@@ -47,9 +44,19 @@ public class Attend {
         return this.student.getName () + " " + this.student.getLastname ();
     }
 
+    @JsonProperty("studentId")
+    public String getStudentId() {
+        return "" + this.student.getId ();
+    }
+
     @JsonProperty("present")
     public AttendType getType() {
         return type;
+    }
+
+    @JsonProperty("date")
+    public LocalDate getDate() {
+        return date;
     }
 
     public void setType(AttendType type) {
