@@ -37,11 +37,12 @@ const rows = [
 
 export default function StudentRosterTable({rows}) {
   const classes = useStyles();
-  
+
 
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
+
         <Table className={classes.table} size="small">
           <TableHead>
             <TableRow>

@@ -2,11 +2,11 @@ package com.shreyauntwale.studentattendance.controller;
 
 import com.shreyauntwale.studentattendance.models.data.StudentDao;
 import com.shreyauntwale.studentattendance.models.form.Student;
-import com.shreyauntwale.studentattendance.models.form.StudentData;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.MediaType;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 
 

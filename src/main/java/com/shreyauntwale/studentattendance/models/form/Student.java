@@ -2,7 +2,7 @@ package com.shreyauntwale.studentattendance.models.form;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.*;
@@ -24,8 +24,8 @@ public class Student {
     @Size(min=3, max=15)
     private String lastname;
 
-    @OneToMany
-    private List<Attend> attendanceDays = new ArrayList<> ();
+    @OneToMany(mappedBy = "student")
+    private List<Attend> attendanceDays;
 
     public Student( String name, String lastname) {
         this.name = name;

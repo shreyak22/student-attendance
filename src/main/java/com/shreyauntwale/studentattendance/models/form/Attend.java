@@ -6,12 +6,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import java.time.LocalDate;
-import java.util.List;
 
 
-/**
- * Created by LaunchCode
- */
+
 @Entity
 public class Attend {
     @Id
@@ -19,6 +16,7 @@ public class Attend {
     private int id;
 
     @ManyToOne
+    @JoinColumn(name="student_id")
     private Student student;
 
     @NotNull
@@ -26,10 +24,22 @@ public class Attend {
 
     private AttendType type;
 
+    // only to set student id for json
+
+    @Transient
+    private int studentIdToSet;
+
+
+    @Transient
+    private String typeId;
+
     public Attend() {
 
     }
 
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     public void setDate(LocalDate date) {
         this.date = date;
@@ -45,8 +55,8 @@ public class Attend {
     }
 
     @JsonProperty("studentId")
-    public String getStudentId() {
-        return "" + this.student.getId ();
+    public int getStudentId() {
+        return this.student.getId ();
     }
 
     @JsonProperty("present")
@@ -62,4 +72,22 @@ public class Attend {
     public void setType(AttendType type) {
         this.type = type;
     }
+
+    public String  getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
+    }
+
+    public void setStudentIdToSet(int studentIdToSet) {
+        this.studentIdToSet = studentIdToSet;
+    }
+
+    public int getStudentIdToSet() {
+        return studentIdToSet;
+    }
+
+
 }
