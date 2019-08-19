@@ -7,6 +7,7 @@ import EnhancedTable from './StudentTable';
 import FixedContainer from './addStudentContainer';
 import StudentRoster from './studentRoster';
 import Moment from 'moment';
+import SimpleModal from './clickModal';
 
 class App extends Component {
     constructor(props) {
@@ -33,6 +34,7 @@ class App extends Component {
         return (
         <div>
             <ButtonAppBar />
+                    <SimpleModal />
             <div id="parentdiv">
                     <div className='rowC'>
                     <Example action={this.childHandler}/>
