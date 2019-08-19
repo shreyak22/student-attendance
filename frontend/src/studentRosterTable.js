@@ -27,14 +27,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function createData(firstname, lastname) {
-  return { firstname, lastname };
-}
-
-const rows = [
-
-];
-
 export default function StudentRosterTable({rows}) {
   const classes = useStyles();
 

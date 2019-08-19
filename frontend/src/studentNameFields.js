@@ -1,7 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 
@@ -30,12 +28,8 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function addClickHandler() {
-   console.log('onClick');
-}
 
-
-export default function TextFields() {
+export default function TextFields({typed}) {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     name: '',
@@ -45,6 +39,15 @@ export default function TextFields() {
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
+    var firstName = values.name;
+    var lastName = values.lastname;
+
+    if (name === "name") {
+        firstName = firstName+ event.target.value;
+    } else {
+        lastName = lastName + event.target.value;
+    }
+    typed(firstName, lastName);
   };
 
 

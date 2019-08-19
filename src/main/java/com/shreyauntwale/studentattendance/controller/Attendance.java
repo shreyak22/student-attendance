@@ -25,19 +25,11 @@ public class Attendance {
     private StudentDao studentDao;
 
 
-    @GetMapping("/api/attend")
-    public Iterable index() {
-
-        Iterable<Attend> listofmaps = attendDao.findAll ();
-
-        return listofmaps;
-    }
-
-
 
     @RequestMapping(value="/api/fetch" , method=RequestMethod.GET)
     @ResponseBody
-    public Iterable fetchResult(@RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate fromDate) {
+    public Iterable fetchAttendanceByDate(@RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd")
+                                                      LocalDate fromDate) {
 
         Iterable<Attend> listofmaps = attendDao.findAll ();
         ArrayList<Attend> attends = new ArrayList<> (  );
@@ -54,7 +46,7 @@ public class Attendance {
 
 
     @PostMapping("/api/attend/add")
-    public void processAddAttendanceForm(@RequestBody Attend newAttendance) {
+    public void takeNewAttendance(@RequestBody Attend newAttendance) {
         Student student = studentDao.findById ( newAttendance.getStudentIdToSet ( ) ).orElseGet ( null );
 
         newAttendance.setStudent ( student );

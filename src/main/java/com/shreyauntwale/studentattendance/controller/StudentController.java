@@ -20,7 +20,7 @@ public class StudentController {
 
 
     @GetMapping("/api/student")
-    public Iterable home() {
+    public Iterable fetchAllStudents() {
 
         Iterable<Student> listofmaps = studentdao.findAll ();
 
@@ -28,7 +28,7 @@ public class StudentController {
     }
 
     @PostMapping("/api/student/add")
-    public void processAddStudentForm(@RequestBody Student newStudent) {
+    public void addNewStudent(@RequestBody Student newStudent) {
          studentdao.save ( newStudent );
     }
 

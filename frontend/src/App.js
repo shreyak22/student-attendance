@@ -4,8 +4,7 @@ import './App.css';
 import Example from './calendar';
 import ButtonAppBar from './MenuBar';
 import EnhancedTable from './StudentTable';
-import ContainedButtons from './button';
-import FixedContainer from './form';
+import FixedContainer from './addStudentContainer';
 import StudentRoster from './studentRoster';
 import Moment from 'moment';
 
