@@ -24,8 +24,10 @@ public class Student {
     @Size(min=3, max=15)
     private String lastname;
 
+    // one student has many attendance so I created a list
     @OneToMany(mappedBy = "student")
     private List<Attend> attendanceDays;
+
 
     public Student( String name, String lastname) {
         this.name = name;

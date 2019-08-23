@@ -15,9 +15,12 @@ public class Attend {
     @GeneratedValue
     private int id;
 
+    // creating student instance to establish Many to One relationship
+
     @ManyToOne
     @JoinColumn(name="student_id")
     private Student student;
+
 
     @NotNull
     private LocalDate date;

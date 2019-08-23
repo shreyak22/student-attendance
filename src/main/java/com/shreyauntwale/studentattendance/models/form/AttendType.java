@@ -13,6 +13,8 @@ public enum AttendType {
             this.presenty = presenty;
         }
 
+        //I have to create a getter so that I can access presenty
+
         public String getName() {
             return presenty;
         }
