@@ -43,10 +43,9 @@ export default function TextFields({typed}) {
     var lastName = values.lastname;
 
     if (name === "name") {
-        firstName = firstName+ event.target.value;
-    } else {
-        lastName = lastName + event.target.value;
-    }
+        firstName = event.target.value;
+    } else lastName = event.target.value;
+
     typed(firstName, lastName);
   };
 

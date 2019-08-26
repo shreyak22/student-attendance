@@ -7,7 +7,7 @@ import EnhancedTable from './StudentTable';
 import FixedContainer from './addStudentContainer';
 import StudentRoster from './studentRoster';
 import Moment from 'moment';
-import SimpleModal from './clickModal';
+import AttendanceModal from './AttendanceModal';
 
 class App extends Component {
     constructor(props) {
@@ -34,19 +34,15 @@ class App extends Component {
         return (
         <div>
             <ButtonAppBar />
-                    <SimpleModal />
+            <AttendanceModal />
             <div id="parentdiv">
                     <div className='rowC'>
-                    <Example action={this.childHandler}/>
-                    <FixedContainer />
-                    <StudentRoster />
+                        <Example action={this.childHandler}/>
+                        <FixedContainer />
+                        <StudentRoster />
                     </div>
                     <EnhancedTable rows={this.state.rows}/>
-
             </div>
-
-
-
         </div>
         );
     }

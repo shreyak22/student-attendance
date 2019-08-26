@@ -1,5 +1,6 @@
 package com.shreyauntwale.studentattendance.models.form;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
@@ -26,6 +27,7 @@ public class Student {
 
     // one student has many attendance so I created a list
     @OneToMany(mappedBy = "student")
+    @JsonIgnore
     private List<Attend> attendanceDays;
 
 

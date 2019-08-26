@@ -11,7 +11,19 @@ const name = {
 
 
 function addClickHandler() {
-          console.log(name.firstName + " " + name.lastName);
+//          console.log(name.firstName + " " + name.lastName);
+    fetch('/api/student/add', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstname: name.firstName,
+        lastname: name.lastName,
+      })
+    });
+    alert("New Student Added");
 }
 
 function updateName(first, last) {
